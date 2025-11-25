@@ -15,6 +15,7 @@ export default function Navbar() {
       <div className="max-w-[90rem] mx-auto">
         <Card className="bg-white shadow-md border-none rounded-2xl sm:rounded-[2rem]">
           <div className="px-4 sm:px-10 py-0 sm:py-0 flex justify-between items-center">
+            {/* LOGO */}
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/Asset 1.png"
@@ -25,15 +26,37 @@ export default function Navbar() {
               />
             </Link>
 
+            {/* NAV LINKS - DESKTOP */}
             <ul className="hidden lg:flex gap-6 xl:gap-8 font-medium text-gray-700">
-              <li className="cursor-pointer hover:text-gray-900">Home</li>
-              <li className="cursor-pointer hover:text-gray-900">About</li>
-              <li className="cursor-pointer hover:text-gray-900">Services</li>
+              <li>
+                <Link href="/" className="cursor-pointer hover:text-gray-900">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="cursor-pointer hover:text-gray-900">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="cursor-pointer hover:text-gray-900">
+                  Services
+                </Link>
+              </li>
               <li className="cursor-pointer hover:text-gray-900">Pages ▾</li>
-              <li className="cursor-pointer hover:text-gray-900">Blog</li>
-              <li className="cursor-pointer hover:text-gray-900">Contact</li>
+              <li>
+                <Link href="/blog" className="cursor-pointer hover:text-gray-900">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="cursor-pointer hover:text-gray-900">
+                  Contact
+                </Link>
+              </li>
             </ul>
 
+            {/* CTA + MOBILE MENU BUTTON */}
             <div className="flex items-center gap-3">
               <Button className="hidden sm:flex bg-[#a3e635] hover:bg-[#84cc16] text-gray-900 rounded-full px-4 sm:px-6 py-1.5 sm:py-2 text-sm font-medium shadow-none">
                 14-Day Free Trial
@@ -43,20 +66,45 @@ export default function Navbar() {
                 className="lg:hidden p-2"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
               </button>
             </div>
           </div>
 
+          {/* MOBILE MENU */}
           {mobileMenuOpen && (
             <div className="lg:hidden border-t px-6 py-4">
               <ul className="space-y-4 font-medium text-gray-700">
-                <li className="cursor-pointer hover:text-gray-900">Home</li>
-                <li className="cursor-pointer hover:text-gray-900">About</li>
-                <li className="cursor-pointer hover:text-gray-900">Services</li>
+                <li>
+                  <Link href="/" className="cursor-pointer hover:text-gray-900 block">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="cursor-pointer hover:text-gray-900 block">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="cursor-pointer hover:text-gray-900 block">
+                    Services
+                  </Link>
+                </li>
                 <li className="cursor-pointer hover:text-gray-900">Pages ▾</li>
-                <li className="cursor-pointer hover:text-gray-900">Blog</li>
-                <li className="cursor-pointer hover:text-gray-900">Contact</li>
+                <li>
+                  <Link href="/blog" className="cursor-pointer hover:text-gray-900 block">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="cursor-pointer hover:text-gray-900 block">
+                    Contact
+                  </Link>
+                </li>
               </ul>
               <Button className="w-full mt-4 bg-[#a3e635] hover:bg-[#84cc16] text-gray-900 rounded-full py-2 text-sm font-medium shadow-none sm:hidden">
                 14-Day Free Trial
