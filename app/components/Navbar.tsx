@@ -14,7 +14,7 @@ export default function Navbar() {
     <nav className="w-full px-4 sm:px-6 pt-6 pb-6 sm:pb-8 bg-[#f5f4ed]">
       <div className="max-w-[90rem] mx-auto">
         <Card className="bg-white shadow-md border-none rounded-2xl sm:rounded-[2rem]">
-          <div className="px-4 sm:px-10 py-0 sm:py-0 flex items-center">
+          <div className="px-4 sm:px-10 py-0 sm:py-0 grid grid-cols-3 items-center">
             {/* LOGO */}
             <Link href="/" className="flex items-center gap-3">
               <Image
@@ -26,8 +26,8 @@ export default function Navbar() {
               />
             </Link>
 
-            {/* NAV LINKS - DESKTOP */}
-            <ul className="hidden lg:flex gap-6 xl:gap-8 font-medium text-gray-700 mx-auto">
+            {/* NAV LINKS - DESKTOP - CENTERED */}
+            <ul className="hidden lg:flex gap-6 xl:gap-8 font-medium text-gray-700 justify-center">
               <li>
                 <Link href="/" className="cursor-pointer hover:text-gray-900">
                   Home
@@ -55,8 +55,8 @@ export default function Navbar() {
               </li>
             </ul>
 
-            {/* MOBILE MENU BUTTON */}
-            <div className="flex items-center gap-3 ml-auto lg:ml-0">
+            {/* MOBILE MENU BUTTON - RIGHT ALIGNED */}
+            <div className="flex items-center justify-end">
               <button
                 className="lg:hidden p-2"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
