@@ -85,12 +85,8 @@ export default function Home() {
             digital transactions safely, quickly and efficiently. Join thousands of businesses worldwide who trust OleqPay to power their payment infrastructure with enterprise-grade security and lightning-fast processing.
           </p>
 
-          <Button className="mt-6 sm:mt-8 bg-[#a3e635] hover:bg-[#84cc16] text-gray-900 rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-medium shadow-none">
-            Get Started <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-
           <p className="mt-4 text-sm text-gray-500">
-            No credit card required • Free 14-day trial • Cancel anytime
+            Trusted by businesses worldwide • Enterprise-grade security
           </p>
         </div>
       </section>
@@ -286,86 +282,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- PRICING ---------- */}
-      <section className="py-12 sm:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-3 sm:mb-4">
-            Simple, Transparent Pricing
-          </h2>
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10 sm:mb-16">
-            No hidden fees, no surprises. Choose the plan that fits your business needs and scale as you grow. All plans include our core security features.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
-            {[
-              {
-                plan: "Starter",
-                price: "Free",
-                benefits: [
-                  "Basic dashboard",
-                  "Email support",
-                  "500 transactions/mo",
-                  "Standard security",
-                  "API access",
-                ],
-              },
-              {
-                plan: "Pro",
-                price: "$29/mo",
-                benefits: [
-                  "Advanced analytics tools",
-                  "Priority 24/7 support",
-                  "Unlimited transactions",
-                  "Advanced fraud protection",
-                  "Custom branding",
-                ],
-                popular: true,
-              },
-              {
-                plan: "Enterprise",
-                price: "Custom",
-                benefits: [
-                  "Full API access",
-                  "Dedicated account manager",
-                  "Custom integrations",
-                  "White-label solutions",
-                  "SLA guarantee",
-                ],
-              },
-            ].map((p, i) => (
-              <Card
-                key={i}
-                className={`p-6 sm:p-8 shadow-lg bg-white border hover:shadow-xl transition-transform transform hover:scale-105 duration-300 relative ${
-                  p.popular ? "ring-2 ring-[#a3e635]" : ""
-                }`}
-              >
-                {p.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#a3e635] text-gray-900 px-4 py-1 rounded-full text-sm font-semibold">
-                    Most Popular
-                  </div>
-                )}
-                <CardContent>
-                  <h3 className="text-xl sm:text-2xl font-bold">{p.plan}</h3>
-                  <p className="text-3xl sm:text-4xl font-bold mt-3 sm:mt-4">
-                    {p.price}
-                  </p>
-                  <ul className="mt-4 sm:mt-6 space-y-2 sm:space-y-3 text-gray-700 text-sm sm:text-base">
-                    {p.benefits.map((b, j) => (
-                      <li key={j} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-[#a3e635] flex-shrink-0 mt-0.5" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="mt-4 sm:mt-6 w-full bg-[#a3e635] hover:bg-[#84cc16] text-gray-900 font-medium shadow-none py-2">
-                    Choose Plan
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ---------- TESTIMONIALS ---------- */}
       <section className="py-12 sm:py-20 bg-[#f5f4ed]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -475,18 +391,15 @@ export default function Home() {
             Ready to Transform Your Payments?
           </h2>
           <p className="text-lg sm:text-xl text-gray-800 mb-8 sm:mb-10 max-w-2xl mx-auto">
-            Join thousands of businesses already using OleqPay. Start accepting payments in minutes with no setup fees and transparent pricing.
+            Join thousands of businesses already using OleqPay. Start accepting payments in minutes with transparent pricing.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-gray-900 hover:bg-gray-800 text-white rounded-full px-8 py-6 text-lg font-medium shadow-none">
-              Get Started Free
-            </Button>
-            <Button className="bg-white hover:bg-gray-100 text-gray-900 rounded-full px-8 py-6 text-lg font-medium shadow-none border-2 border-gray-900">
-              Schedule Demo
+              Contact Sales
             </Button>
           </div>
           <p className="mt-6 text-sm text-gray-700">
-            No credit card required • Setup in minutes • 24/7 support
+            Setup in minutes • 24/7 support • Enterprise-grade security
           </p>
         </div>
       </section>

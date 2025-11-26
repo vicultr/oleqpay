@@ -14,7 +14,7 @@ export default function Navbar() {
     <nav className="w-full px-4 sm:px-6 pt-6 pb-6 sm:pb-8 bg-[#f5f4ed]">
       <div className="max-w-[90rem] mx-auto">
         <Card className="bg-white shadow-md border-none rounded-2xl sm:rounded-[2rem]">
-          <div className="px-4 sm:px-10 py-0 sm:py-0 flex justify-between items-center">
+          <div className="px-4 sm:px-10 py-0 sm:py-0 flex items-center">
             {/* LOGO */}
             <Link href="/" className="flex items-center gap-3">
               <Image
@@ -27,7 +27,7 @@ export default function Navbar() {
             </Link>
 
             {/* NAV LINKS - DESKTOP */}
-            <ul className="hidden lg:flex gap-6 xl:gap-8 font-medium text-gray-700">
+            <ul className="hidden lg:flex gap-6 xl:gap-8 font-medium text-gray-700 mx-auto">
               <li>
                 <Link href="/" className="cursor-pointer hover:text-gray-900">
                   Home
@@ -43,7 +43,6 @@ export default function Navbar() {
                   Services
                 </Link>
               </li>
-              <li className="cursor-pointer hover:text-gray-900">Pages ▾</li>
               <li>
                 <Link href="/blog" className="cursor-pointer hover:text-gray-900">
                   Blog
@@ -56,12 +55,8 @@ export default function Navbar() {
               </li>
             </ul>
 
-            {/* CTA + MOBILE MENU BUTTON */}
-            <div className="flex items-center gap-3">
-              <Button className="hidden sm:flex bg-[#a3e635] hover:bg-[#84cc16] text-gray-900 rounded-full px-4 sm:px-6 py-1.5 sm:py-2 text-sm font-medium shadow-none">
-                14-Day Free Trial
-              </Button>
-
+            {/* MOBILE MENU BUTTON */}
+            <div className="flex items-center gap-3 ml-auto lg:ml-0">
               <button
                 className="lg:hidden p-2"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -94,7 +89,6 @@ export default function Navbar() {
                     Services
                   </Link>
                 </li>
-                <li className="cursor-pointer hover:text-gray-900">Pages ▾</li>
                 <li>
                   <Link href="/blog" className="cursor-pointer hover:text-gray-900 block">
                     Blog
@@ -107,7 +101,7 @@ export default function Navbar() {
                 </li>
               </ul>
               <Button className="w-full mt-4 bg-[#a3e635] hover:bg-[#84cc16] text-gray-900 rounded-full py-2 text-sm font-medium shadow-none sm:hidden">
-                14-Day Free Trial
+                Get Started
               </Button>
             </div>
           )}

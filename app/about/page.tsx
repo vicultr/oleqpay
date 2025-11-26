@@ -403,14 +403,11 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-medium shadow-lg transition">
-              Get Started Free
-            </button>
-            <button className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-full font-medium border-2 border-gray-900 transition">
               Contact Sales
             </button>
           </div>
           <p className="mt-6 text-sm text-gray-700">
-            No credit card required • Setup in minutes • 24/7 support
+            Setup in minutes • 24/7 support • Enterprise-grade security
           </p>
         </div>
       </section>

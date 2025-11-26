@@ -40,11 +40,6 @@ export default function Footer() {
                 Report Issue
               </Link>
             </li>
-            <li>
-              <Link href="/api-docs" className="hover:text-white transition-colors">
-                API Docs
-              </Link>
-            </li>
           </ul>
         </div>
         <div>

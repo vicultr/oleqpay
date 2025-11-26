@@ -80,11 +80,6 @@ export default function ServicesPage() {
       desc: "Get deep insights into your payment data with real-time dashboards, custom reports, and revenue forecasting. Track conversion rates, identify trends, and optimize your payment strategy.",
     },
     {
-      icon: <Code className="w-8 h-8" />,
-      title: "Developer APIs",
-      desc: "Build custom payment experiences with our comprehensive REST APIs, webhooks, and SDKs. Complete documentation, sandbox environments, and dedicated developer support.",
-    },
-    {
       icon: <RefreshCw className="w-8 h-8" />,
       title: "Dispute Management",
       desc: "Automated chargeback handling with evidence collection and submission. Real-time alerts and comprehensive dispute analytics to minimize losses.",
@@ -202,7 +197,7 @@ export default function ServicesPage() {
             Powerful tools to optimize, secure, and scale your payment operations
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {additionalServices.map((service, i) => (
               <Card
                 key={i}
@@ -431,15 +426,12 @@ export default function ServicesPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-[#a3e635] hover:bg-[#84cc16] text-gray-900 px-8 py-4 rounded-full font-medium inline-flex items-center justify-center gap-2 transition">
-              Create Account <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-full font-medium border-2 border-gray-900 transition">
-              View Documentation
+              Contact Sales <ArrowRight className="w-5 h-5" />
             </button>
           </div>
 
           <p className="mt-6 text-sm text-gray-500">
-            No credit card required • Free integration support • 24/7 assistance
+            Integration support • 24/7 assistance • Enterprise-grade security
           </p>
         </div>
       </section>
