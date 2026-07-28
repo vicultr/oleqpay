@@ -386,27 +386,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* ---------- CTA ---------- */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-brand-green to-brand-green-dark">
-        <div className="text-center max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-            Ready to Accept Payments Seamlessly?
-          </h2>
-          <p className="text-white/90 mb-8 text-lg">
-            Join thousands of businesses using OleqPay to process safe and
-            reliable payments globally. Start your journey today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-medium shadow-lg transition">
-              Contact Sales
-            </button>
-          </div>
-          <p className="mt-6 text-sm text-white/80">
-            Setup in minutes • 24/7 support • Enterprise-grade security
-          </p>
-        </div>
-      </section>
     </main>
   );
 }
