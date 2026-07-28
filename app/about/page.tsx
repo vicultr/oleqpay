@@ -82,14 +82,14 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#f5f4ed] text-gray-800">
       {/* ---------- HERO ---------- */}
-      <section className="pt-12 sm:pt-20 pb-10 text-center relative overflow-hidden">
+      <section className="pt-6 sm:pt-10 pb-10 text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-[#a3e635] rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#84cc16] rounded-full blur-3xl"></div>
+          <div className="absolute top-10 left-10 w-72 h-72 bg-brand-green rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-brand-green-dark rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-            About <span className="text-[#a3e635]">OleqPay</span>
+            About <span className="text-brand-green">OleqPay</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             OleqPay is a modern payment gateway built to power fast, seamless,
@@ -99,7 +99,7 @@ export default function AboutPage() {
       </section>
 
       {/* ---------- STATS BANNER ---------- */}
-      <section className="py-12 bg-gradient-to-r from-[#a3e635] to-[#84cc16]">
+      <section className="py-12 bg-gradient-to-r from-brand-green to-brand-green-dark">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -108,7 +108,7 @@ export default function AboutPage() {
               { value: "150+", label: "Countries" },
               { value: "99.99%", label: "Uptime" },
             ].map((stat, i) => (
-              <div key={i} className="text-gray-900">
+              <div key={i} className="text-white">
                 <div className="text-3xl sm:text-4xl font-bold mb-2">
                   {stat.value}
                 </div>
@@ -155,8 +155,8 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="p-8 bg-white shadow-sm hover:shadow-md transition">
               <CardContent className="p-0">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-[#a3e635]">
-                  <Target className="w-8 h-8 text-gray-900" />
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-brand-green text-white">
+                  <Target className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold mb-4">Our Mission</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -167,8 +167,8 @@ export default function AboutPage() {
 
             <Card className="p-8 bg-white shadow-sm hover:shadow-md transition">
               <CardContent className="p-0">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-[#a3e635]">
-                  <Heart className="w-8 h-8 text-gray-900" />
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-brand-green text-white">
+                  <Heart className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold mb-4">Our Vision</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -197,7 +197,7 @@ export default function AboutPage() {
                 className="p-6 bg-gray-50 shadow-sm border hover:shadow-md transition-transform hover:scale-105 duration-300"
               >
                 <CardContent className="p-0 text-center">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-[#a3e635] mx-auto">
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-brand-green text-white mx-auto">
                     {v.icon}
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{v.title}</h3>
@@ -221,21 +221,27 @@ export default function AboutPage() {
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[#a3e635]"></div>
+            <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 w-1 h-full bg-brand-green"></div>
 
-            <div className="space-y-12">
-              {milestones.map((milestone, i) => (
-                <div
-                  key={i}
-                  className={`flex flex-col md:flex-row gap-8 items-center ${
-                    i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
-                >
-                  <div className="flex-1 text-center md:text-right">
-                    {i % 2 === 0 && (
-                      <Card className="p-6 bg-white shadow-sm inline-block max-w-md">
+            <div className="space-y-10 md:space-y-6">
+              {milestones.map((milestone, i) => {
+                const isLeft = i % 2 === 0;
+                return (
+                  <div
+                    key={i}
+                    className="grid grid-cols-1 md:grid-cols-[1fr_2.5rem_1fr] items-center gap-4 md:gap-6"
+                  >
+                    {/* Card slot - flips side based on index */}
+                    <div
+                      className={`flex justify-center ${
+                        isLeft
+                          ? "md:justify-end md:order-1"
+                          : "md:justify-start md:order-3"
+                      }`}
+                    >
+                      <Card className="p-6 bg-white shadow-sm w-full max-w-md">
                         <CardContent className="p-0">
-                          <div className="text-3xl font-bold text-[#a3e635] mb-2">
+                          <div className="text-3xl font-bold text-brand-green mb-2">
                             {milestone.year}
                           </div>
                           <h3 className="text-xl font-semibold mb-2">
@@ -246,30 +252,20 @@ export default function AboutPage() {
                           </p>
                         </CardContent>
                       </Card>
-                    )}
-                  </div>
+                    </div>
 
-                  <div className="hidden md:flex w-8 h-8 rounded-full bg-[#a3e635] border-4 border-white shadow-lg z-10 flex-shrink-0"></div>
+                    {/* Timeline dot - always centered */}
+                    <div className="hidden md:flex md:order-2 justify-self-center w-8 h-8 rounded-full bg-brand-green border-4 border-white shadow-lg z-10 flex-shrink-0"></div>
 
-                  <div className="flex-1 text-center md:text-left">
-                    {i % 2 !== 0 && (
-                      <Card className="p-6 bg-white shadow-sm inline-block max-w-md">
-                        <CardContent className="p-0">
-                          <div className="text-3xl font-bold text-[#a3e635] mb-2">
-                            {milestone.year}
-                          </div>
-                          <h3 className="text-xl font-semibold mb-2">
-                            {milestone.title}
-                          </h3>
-                          <p className="text-gray-600 text-sm">
-                            {milestone.desc}
-                          </p>
-                        </CardContent>
-                      </Card>
-                    )}
+                    {/* Empty spacer on the opposite side, keeps the grid balanced */}
+                    <div
+                      className={`hidden md:block ${
+                        isLeft ? "md:order-3" : "md:order-1"
+                      }`}
+                    ></div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -292,7 +288,7 @@ export default function AboutPage() {
                 className="p-6 bg-gray-50 shadow-sm border hover:shadow-md transition"
               >
                 <CardContent className="p-0 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#a3e635] flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center flex-shrink-0">
                     {achievement.icon}
                   </div>
                   <p className="font-semibold text-gray-800">
@@ -322,7 +318,7 @@ export default function AboutPage() {
                 className="p-6 bg-white shadow-sm border hover:shadow-md transition"
               >
                 <CardContent className="p-0">
-                  <h3 className="text-xl font-bold mb-3 text-[#a3e635]">
+                  <h3 className="text-xl font-bold mb-3 text-brand-green">
                     {dept.role}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -377,7 +373,7 @@ export default function AboutPage() {
                 className="p-6 bg-gray-50 shadow-sm border hover:shadow-md transition"
               >
                 <CardContent className="p-0 flex gap-4">
-                  <CheckCircle2 className="w-6 h-6 text-[#a3e635] flex-shrink-0 mt-1" />
+                  <CheckCircle2 className="w-6 h-6 text-brand-green flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-lg font-semibold mb-2">
                       {reason.title}
@@ -392,12 +388,12 @@ export default function AboutPage() {
       </section>
 
       {/* ---------- CTA ---------- */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#a3e635] to-[#84cc16]">
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-brand-green to-brand-green-dark">
         <div className="text-center max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
             Ready to Accept Payments Seamlessly?
           </h2>
-          <p className="text-gray-800 mb-8 text-lg">
+          <p className="text-white/90 mb-8 text-lg">
             Join thousands of businesses using OleqPay to process safe and
             reliable payments globally. Start your journey today.
           </p>
@@ -406,7 +402,7 @@ export default function AboutPage() {
               Contact Sales
             </button>
           </div>
-          <p className="mt-6 text-sm text-gray-700">
+          <p className="mt-6 text-sm text-white/80">
             Setup in minutes • 24/7 support • Enterprise-grade security
           </p>
         </div>

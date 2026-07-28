@@ -130,10 +130,10 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-[#f5f4ed] text-gray-800">
       {/* ---------- HERO ---------- */}
-      <section className="pt-12 sm:pt-20 pb-10 text-center relative overflow-hidden">
+      <section className="pt-6 sm:pt-10 pb-10 text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-[#a3e635] rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#84cc16] rounded-full blur-3xl"></div>
+          <div className="absolute top-10 left-10 w-72 h-72 bg-brand-green rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-brand-green-dark rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
@@ -163,7 +163,7 @@ export default function ServicesPage() {
                 className="p-6 bg-gray-50 border shadow-sm hover:shadow-md hover:scale-[1.03] transition duration-300"
               >
                 <CardContent className="p-0">
-                  <div className="w-14 h-14 rounded-xl bg-[#a3e635] flex items-center justify-center mb-5">
+                  <div className="w-14 h-14 rounded-xl bg-brand-green text-white flex items-center justify-center mb-5">
                     {service.icon}
                   </div>
                   <h3 className="text-xl font-semibold mb-3">
@@ -175,7 +175,7 @@ export default function ServicesPage() {
                   <ul className="space-y-2">
                     {service.features.map((feature, j) => (
                       <li key={j} className="flex items-start gap-2 text-xs text-gray-600">
-                        <CheckCircle2 className="w-4 h-4 text-[#a3e635] flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-brand-green flex-shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -204,7 +204,7 @@ export default function ServicesPage() {
                 className="p-8 bg-white shadow-sm hover:shadow-md transition"
               >
                 <CardContent className="p-0">
-                  <div className="w-16 h-16 rounded-xl bg-[#a3e635] flex items-center justify-center mb-5">
+                  <div className="w-16 h-16 rounded-xl bg-brand-green text-white flex items-center justify-center mb-5">
                     {service.icon}
                   </div>
                   <h3 className="text-2xl font-semibold mb-3">
@@ -237,7 +237,7 @@ export default function ServicesPage() {
                 className="p-6 bg-gray-50 border shadow-sm hover:shadow-md transition"
               >
                 <CardContent className="p-0">
-                  <h3 className="text-xl font-bold mb-2 text-[#a3e635]">
+                  <h3 className="text-xl font-bold mb-2 text-brand-green">
                     {industry.name}
                   </h3>
                   <p className="text-gray-600 text-sm">
@@ -251,20 +251,20 @@ export default function ServicesPage() {
       </section>
 
       {/* ---------- BENEFITS ---------- */}
-      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#a3e635] to-[#84cc16]">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-brand-green to-brand-green-dark">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-white">
             Why Choose OleqPay Services
           </h2>
-          <p className="text-center text-gray-800 max-w-2xl mx-auto mb-12">
+          <p className="text-center text-white/90 max-w-2xl mx-auto mb-12">
             Built with your success in mind
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit, i) => (
               <div key={i} className="flex items-start gap-3 bg-white/20 backdrop-blur-sm rounded-lg p-4">
-                <CheckCircle2 className="w-6 h-6 text-gray-900 flex-shrink-0 mt-0.5" />
-                <p className="text-gray-900 font-medium">{benefit}</p>
+                <CheckCircle2 className="w-6 h-6 text-white flex-shrink-0 mt-0.5" />
+                <p className="text-white font-medium">{benefit}</p>
               </div>
             ))}
           </div>
@@ -305,7 +305,7 @@ export default function ServicesPage() {
               },
             ].map((item, i) => (
               <div key={i} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-[#a3e635] text-gray-900 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 rounded-full bg-brand-green text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
@@ -331,7 +331,7 @@ export default function ServicesPage() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <Zap className="w-6 h-6 text-[#a3e635]" />
+                    <Zap className="w-6 h-6 text-brand-green" />
                     Performance
                   </h3>
                   <ul className="space-y-3">
@@ -342,7 +342,7 @@ export default function ServicesPage() {
                       "Auto-scaling infrastructure",
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-gray-700">
-                        <CheckCircle2 className="w-5 h-5 text-[#a3e635] flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -351,7 +351,7 @@ export default function ServicesPage() {
 
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <Shield className="w-6 h-6 text-[#a3e635]" />
+                    <Shield className="w-6 h-6 text-brand-green" />
                     Security
                   </h3>
                   <ul className="space-y-3">
@@ -362,7 +362,7 @@ export default function ServicesPage() {
                       "Real-time risk monitoring",
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-gray-700">
-                        <CheckCircle2 className="w-5 h-5 text-[#a3e635] flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -371,7 +371,7 @@ export default function ServicesPage() {
 
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <Globe className="w-6 h-6 text-[#a3e635]" />
+                    <Globe className="w-6 h-6 text-brand-green" />
                     Global Reach
                   </h3>
                   <ul className="space-y-3">
@@ -382,7 +382,7 @@ export default function ServicesPage() {
                       "Multi-language support",
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-gray-700">
-                        <CheckCircle2 className="w-5 h-5 text-[#a3e635] flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -391,7 +391,7 @@ export default function ServicesPage() {
 
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <TrendingUp className="w-6 h-6 text-[#a3e635]" />
+                    <TrendingUp className="w-6 h-6 text-brand-green" />
                     Business Growth
                   </h3>
                   <ul className="space-y-3">
@@ -402,7 +402,7 @@ export default function ServicesPage() {
                       "Custom reporting",
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-gray-700">
-                        <CheckCircle2 className="w-5 h-5 text-[#a3e635] flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -425,7 +425,7 @@ export default function ServicesPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-[#a3e635] hover:bg-[#84cc16] text-gray-900 px-8 py-4 rounded-full font-medium inline-flex items-center justify-center gap-2 transition">
+            <button className="bg-brand-green hover:bg-brand-green-dark text-white px-8 py-4 rounded-full font-medium inline-flex items-center justify-center gap-2 transition">
               Contact Sales <ArrowRight className="w-5 h-5" />
             </button>
           </div>

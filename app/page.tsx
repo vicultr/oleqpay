@@ -69,10 +69,10 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#f5f4ed] text-gray-800">
       {/* ---------- HERO ---------- */}
-      <section className="pt-8 sm:pt-16 pb-12 sm:pb-20 text-center relative overflow-hidden">
+      <section className="pt-6 sm:pt-10 pb-12 sm:pb-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-[#a3e635] rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#84cc16] rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-brand-green rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-green-dark rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
@@ -195,7 +195,7 @@ export default function Home() {
               },
             ].map((item, i) => (
               <div key={i} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-[#a3e635] flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-full bg-brand-green text-white flex items-center justify-center mx-auto mb-4">
                   {item.icon}
                 </div>
                 <div className="text-5xl font-bold text-gray-200 mb-3">
@@ -243,7 +243,7 @@ export default function Home() {
                 className="p-5 sm:p-6 border bg-gray-50 shadow-sm hover:shadow-md transition-transform transform hover:scale-105 duration-300"
               >
                 <CardContent>
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-[#a3e635]">
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-brand-green text-white">
                     {item.icon}
                   </div>
                   <h3 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">
@@ -260,7 +260,7 @@ export default function Home() {
       </section>
 
       {/* ---------- STATS ---------- */}
-      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#a3e635] to-[#84cc16]">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-brand-green to-brand-green-dark">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -269,7 +269,7 @@ export default function Home() {
               { value: "10M+", label: "Transactions/Day" },
               { value: "<1s", label: "Processing Time" },
             ].map((stat, i) => (
-              <div key={i} className="text-gray-900">
+              <div key={i} className="text-white">
                 <div className="text-4xl sm:text-5xl font-bold mb-2">
                   {stat.value}
                 </div>
@@ -316,7 +316,7 @@ export default function Home() {
                 <CardContent>
                   <div className="flex gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className="text-[#a3e635] text-xl">
+                      <span key={i} className="text-brand-green text-xl">
                         ★
                       </span>
                     ))}
@@ -385,12 +385,12 @@ export default function Home() {
       </section>
 
       {/* ---------- CTA ---------- */}
-      <section className="py-16 sm:py-24 bg-gradient-to-br from-[#a3e635] to-[#84cc16]">
+      <section className="py-16 sm:py-24 bg-gradient-to-br from-brand-green to-brand-green-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
             Ready to Transform Your Payments?
           </h2>
-          <p className="text-lg sm:text-xl text-gray-800 mb-8 sm:mb-10 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/90 mb-8 sm:mb-10 max-w-2xl mx-auto">
             Join thousands of businesses already using OleqPay. Start accepting payments in minutes with transparent pricing.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -398,7 +398,7 @@ export default function Home() {
               Contact Sales
             </Button>
           </div>
-          <p className="mt-6 text-sm text-gray-700">
+          <p className="mt-6 text-sm text-white/80">
             Setup in minutes • 24/7 support • Enterprise-grade security
           </p>
         </div>

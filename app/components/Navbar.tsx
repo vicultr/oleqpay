@@ -11,7 +11,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full px-4 sm:px-6 pt-6 pb-6 sm:pb-8 bg-[#f5f4ed]">
+    <nav className="w-full px-4 sm:px-6 pt-4 sticky top-0 z-50 bg-[#f5f4ed]/95 backdrop-blur-sm">
       <div className="max-w-[90rem] mx-auto">
         <Card className="bg-white shadow-md border-none rounded-2xl sm:rounded-[2rem]">
           <div className="px-4 sm:px-10 py-0 sm:py-0 flex items-center justify-between lg:grid lg:grid-cols-3">
@@ -95,7 +95,7 @@ export default function Navbar() {
                   </Link>
                 </li>
               </ul>
-              <Button className="w-full mt-4 bg-[#a3e635] hover:bg-[#84cc16] text-gray-900 rounded-full py-2 text-sm font-medium shadow-none sm:hidden">
+              <Button className="w-full mt-4 bg-brand-green hover:bg-brand-green-dark text-white rounded-full py-2 text-sm font-medium shadow-none sm:hidden">
                 Get Started
               </Button>
             </div>
