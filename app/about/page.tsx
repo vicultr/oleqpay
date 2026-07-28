@@ -142,8 +142,8 @@ export default function AboutPage() {
                 routing, and world-class security protocols. Today, we're proud to serve thousands of businesses across six continents.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-2xl h-64 sm:h-96 flex items-center justify-center relative overflow-hidden shadow-xl">
-              <Rocket className="w-32 h-32 text-gray-300" />
+            <div className="rounded-2xl h-64 sm:h-96 flex items-center justify-center overflow-hidden shadow-xl bg-[#f5f4ed]">
+              <img src="/illustrations/our-story.svg" alt="Illustration of business growth powered by OleqPay" className="w-full h-full object-contain p-6" />
             </div>
           </div>
         </div>

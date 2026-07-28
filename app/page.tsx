@@ -154,11 +154,8 @@ export default function Home() {
             Our intuitive dashboard gives you complete visibility and control over your payment operations. Monitor transactions, track analytics, and manage your business finances all in one place.
           </p>
           <div className="rounded-2xl shadow-xl border bg-white overflow-hidden p-4 sm:p-8">
-            <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-lg h-64 sm:h-96 flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <CreditCard className="w-24 h-24 text-gray-300" />
-              </div>
-              <p className="text-gray-500 relative z-10">Dashboard Preview</p>
+            <div className="rounded-lg h-64 sm:h-96 flex items-center justify-center overflow-hidden bg-[#f5f4ed]">
+              <img src="/illustrations/dashboard-preview.svg" alt="OleqPay payments dashboard preview" className="w-full h-full object-contain p-6" />
             </div>
           </div>
         </div>
