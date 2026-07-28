@@ -44,11 +44,6 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="cursor-pointer hover:text-gray-900">
-                  Blog
-                </Link>
-              </li>
-              <li>
                 <Link href="/contact" className="cursor-pointer hover:text-gray-900">
                   Contact
                 </Link>
