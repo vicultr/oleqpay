@@ -32,8 +32,8 @@ export default function ServicesPage() {
     {
       icon: <Globe className="w-7 h-7" />,
       title: "Online Payments",
-      desc: "Accept global payments with support for cards, digital wallets, and multi-currency transactions. Process payments in 135+ currencies with automatic conversion.",
-      features: ["135+ currencies", "Local payment methods", "Real-time exchange rates"],
+      desc: "Accept global payments with support for cards, digital wallets, and multi-currency transactions. Process payments in 60+ currencies with automatic conversion.",
+      features: ["60+ currencies", "Local payment methods", "Real-time exchange rates"],
     },
     {
       icon: <CreditCard className="w-7 h-7" />,
@@ -376,8 +376,8 @@ export default function ServicesPage() {
                   </h3>
                   <ul className="space-y-3">
                     {[
-                      "150+ countries supported",
-                      "135+ currencies accepted",
+                      "190+ countries supported",
+                      "60+ currencies accepted",
                       "Local payment methods",
                       "Multi-language support",
                     ].map((item, i) => (

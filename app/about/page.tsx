@@ -14,7 +14,7 @@ export default function AboutPage() {
     {
       icon: <Globe className="w-8 h-8" />,
       title: "Global Access",
-      desc: "OleqPay enables borderless payments, helping businesses reach customers in 150+ countries with local payment methods.",
+      desc: "OleqPay enables borderless payments, helping businesses reach customers in 190+ countries with local payment methods.",
     },
     {
       icon: <Zap className="w-8 h-8" />,
@@ -47,7 +47,7 @@ export default function AboutPage() {
     {
       year: "2024",
       title: "Industry Leader",
-      desc: "Recognized as a top payment gateway with 150+ country coverage",
+      desc: "Recognized as a top payment gateway with 190+ country coverage",
     },
   ];
 
@@ -73,9 +73,9 @@ export default function AboutPage() {
   const achievements = [
     { icon: <Award className="w-6 h-6" />, text: "PCI DSS Level 1 Certified" },
     { icon: <TrendingUp className="w-6 h-6" />, text: "99.99% Uptime SLA" },
-    { icon: <Globe className="w-6 h-6" />, text: "150+ Countries Supported" },
+    { icon: <Globe className="w-6 h-6" />, text: "190+ Countries Supported" },
     { icon: <Shield className="w-6 h-6" />, text: "Bank-Level Encryption" },
-    { icon: <Users className="w-6 h-6" />, text: "50,000+ Active Merchants" },
+    { icon: <Users className="w-6 h-6" />, text: "1.2M+ Active Users" },
     { icon: <Zap className="w-6 h-6" />, text: "Sub-Second Processing" },
   ];
 
@@ -103,9 +103,9 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: "50K+", label: "Active Merchants" },
-              { value: "$5B+", label: "Processed Annually" },
-              { value: "150+", label: "Countries" },
+              { value: "1.2M+", label: "Active Users" },
+              { value: "$2B+", label: "Processed Annually" },
+              { value: "190+", label: "Countries" },
               { value: "99.99%", label: "Uptime" },
             ].map((stat, i) => (
               <div key={i} className="text-white">

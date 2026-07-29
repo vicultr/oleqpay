@@ -184,7 +184,7 @@ function CheckoutTab() {
     <>
       <Section id="checkout-overview" title="Overview">
         <p className="mb-4">
-          The Oleq Pay API is a REST API. All requests are made to{" "}
+          The OleqPay API is a REST API. All requests are made to{" "}
           <code className="text-brand-green">https://my.oleqpay.com</code> and all responses
           are JSON.
         </p>
@@ -207,7 +207,7 @@ function CheckoutTab() {
       <Section id="checkout-auth" title="Authentication">
         <p className="mb-4">
           Every API call requires your API key. Set it via environment variables on your
-          server — never expose it client-side. Oleq Pay validates the key inside the encoded
+          server — never expose it client-side. OleqPay validates the key inside the encoded
           payment payload.
         </p>
         <CodeBlock label=".env">{`OLEQPAY_API_KEY=your_live_api_key_here
@@ -268,7 +268,7 @@ WEB_URL=https://yourapp.com`}</CodeBlock>
           src={iframeUrl}
           className="w-full"
           style={{ height: 520, border: 'none' }}
-          title="Oleq Pay Checkout"
+          title="OleqPay Checkout"
         />
       </div>
     </div>
@@ -311,7 +311,7 @@ WEB_URL=https://yourapp.com`}</CodeBlock>
 
       <Section id="checkout-callbacks" title="Handling callbacks">
         <p className="mb-4">
-          After a payment completes (or fails), Oleq Pay sends a POST request to your{" "}
+          After a payment completes (or fails), OleqPay sends a POST request to your{" "}
           <code className="text-brand-green">CALLBACK_URL</code>. Your endpoint must respond
           with HTTP 200 within 10 seconds.
         </p>

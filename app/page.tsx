@@ -134,7 +134,7 @@ export default function Home() {
     },
     {
       title: "Disburse & reconcile",
-      desc: "Trigger one payout; Oleq Pay fans out to every recipient and auto-generates reports.",
+      desc: "Trigger one payout; OleqPay fans out to every recipient and auto-generates reports.",
     },
   ];
 
@@ -162,7 +162,7 @@ export default function Home() {
     {
       icon: <Calendar className="w-6 h-6" />,
       title: "Scheduled & recurring runs",
-      desc: "Set weekly, bi-weekly, or monthly payroll runs. Oleq Pay auto-executes on schedule and sends receipts to each recipient — zero manual intervention.",
+      desc: "Set weekly, bi-weekly, or monthly payroll runs. OleqPay auto-executes on schedule and sends receipts to each recipient — zero manual intervention.",
     },
     {
       icon: <Download className="w-6 h-6" />,
@@ -190,7 +190,7 @@ export default function Home() {
                 <span className="text-brand-green">built for Africa.</span>
               </h1>
               <p className="mt-6 text-base sm:text-lg text-gray-600 max-w-xl">
-                Oleq Pay gives individuals, businesses, and developers a smarter way to send, receive, and settle money — across borders, in real time, with zero hidden fees.
+                OleqPay gives individuals, businesses, and developers a smarter way to send, receive, and settle money — across borders, in real time, with zero hidden fees.
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -304,7 +304,7 @@ export default function Home() {
             Infrastructure built for modern finance.
           </h2>
           <p className="text-gray-600 max-w-2xl mb-12">
-            Oleq Pay combines the speed of modern payment rails with bank-level compliance — giving individuals and businesses the best of both worlds.
+            OleqPay combines the speed of modern payment rails with bank-level compliance — giving individuals and businesses the best of both worlds.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -355,7 +355,7 @@ export default function Home() {
             Move money the way your business demands.
           </h2>
           <p className="text-gray-600 max-w-2xl mb-12">
-            From one-click transfers to high-volume batch disbursements, Oleq Pay handles every payment scenario with the same instant rails and zero friction.
+            From one-click transfers to high-volume batch disbursements, OleqPay handles every payment scenario with the same instant rails and zero friction.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
@@ -389,7 +389,7 @@ export default function Home() {
             Pay your entire team in one click.
           </h2>
           <p className="text-gray-600 max-w-2xl mb-12">
-            Oleq Pay's payroll engine lets you manage recipients, organise them into groups, tag every disbursement by category, and execute bulk payouts to hundreds of beneficiaries simultaneously — all from your business account.
+            OleqPay's payroll engine lets you manage recipients, organise them into groups, tag every disbursement by category, and execute bulk payouts to hundreds of beneficiaries simultaneously — all from your business account.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-14">
