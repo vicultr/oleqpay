@@ -44,6 +44,11 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
+                <Link href="/developers" className="cursor-pointer hover:text-gray-900">
+                  Docs
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="cursor-pointer hover:text-gray-900">
                   Contact
                 </Link>
@@ -82,6 +87,11 @@ export default function Navbar() {
                 <li>
                   <Link href="/services" className="cursor-pointer hover:text-gray-900 block">
                     Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/developers" className="cursor-pointer hover:text-gray-900 block">
+                    Docs
                   </Link>
                 </li>
                 <li>
