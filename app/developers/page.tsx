@@ -22,6 +22,33 @@ function CodeBlock({ children, label }: { children: string; label?: string }) {
   );
 }
 
+function CodeTabs({ tabs }: { tabs: { label: string; code: string }[] }) {
+  const [active, setActive] = useState(0);
+  return (
+    <div className="rounded-xl overflow-hidden border border-gray-800 bg-gray-900 my-4">
+      <div className="flex gap-1 px-2 pt-2 overflow-x-auto">
+        {tabs.map((tab, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => setActive(i)}
+            className={`whitespace-nowrap px-3 py-1.5 text-xs rounded-t-md transition ${
+              active === i
+                ? "bg-gray-800 text-white"
+                : "text-gray-500 hover:text-gray-300"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+      <pre className="p-4 overflow-x-auto text-xs sm:text-sm text-gray-100 leading-relaxed border-t border-gray-800">
+        <code>{tabs[active].code}</code>
+      </pre>
+    </div>
+  );
+}
+
 function Callout({
   type = "info",
   children,
@@ -223,25 +250,29 @@ WEB_URL=https://yourapp.com`}</CodeBlock>
       <Section id="checkout-integration" title="Checkout integration">
         <p className="mb-4">
           The checkout flow works by encoding a payment payload, constructing an iframe URL, and
-          rendering it for your customer. When the customer completes payment, Oleq Pay POSTs to
+          rendering it for your customer. When the customer completes payment, OleqPay POSTs to
           your callback URL and redirects to your return URL.
         </p>
 
         <h3 className="font-semibold text-gray-800 mb-2">Step 1 — Build the payment payload</h3>
         <ParamTable
           rows={[
-            { field: "apikey", type: "string", desc: "Your Oleq Pay API key" },
+            { field: "apikey", type: "string", desc: "Your OleqPay API key" },
             { field: "orderid", type: "string", desc: "Your internal order / transaction ID" },
             { field: "amount", type: "number", desc: "Payment amount in KES (e.g. 1500)" },
-            { field: "reference", type: "string", desc: "Pass empty string — Oleq Pay auto-generates" },
-            { field: "callbackurl", type: "string", desc: "HTTPS URL Oleq Pay will POST the result to" },
+            { field: "reference", type: "string", desc: "Pass empty string — OleqPay auto-generates" },
+            { field: "callbackurl", type: "string", desc: "HTTPS URL OleqPay will POST the result to" },
             { field: "returnurl", type: "string", desc: "URL to redirect the customer after payment" },
           ]}
         />
 
         <h3 className="font-semibold text-gray-800 mb-2 mt-6">Step 2 — Double-encode the payload</h3>
         <p className="mb-2">Serialize the payload to JSON then apply base64 encoding twice:</p>
-        <CodeBlock label="TypeScript">{`function encodePaymentData(data: {
+        <CodeTabs
+          tabs={[
+            {
+              label: "NestJS",
+              code: `function encodePaymentData(data: {
   apikey: string;
   orderid: string;
   amount: number;
@@ -253,7 +284,35 @@ WEB_URL=https://yourapp.com`}</CodeBlock>
   const firstEncode  = Buffer.from(jsonString,  'utf-8').toString('base64');
   const doubleEncode = Buffer.from(firstEncode, 'utf-8').toString('base64');
   return doubleEncode;
-}`}</CodeBlock>
+}`,
+            },
+            {
+              label: "Java (Spring Boot)",
+              code: `import java.util.Base64;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public String encodePaymentData(PaymentPayload data) throws Exception {
+    ObjectMapper mapper = new ObjectMapper();
+    String json        = mapper.writeValueAsString(data);
+    String firstEncode = Base64.getEncoder().encodeToString(json.getBytes("UTF-8"));
+    return Base64.getEncoder().encodeToString(firstEncode.getBytes("UTF-8"));
+}`,
+            },
+            {
+              label: ".NET (C#)",
+              code: `using System;
+using System.Text;
+using System.Text.Json;
+
+public static string EncodePaymentData(PaymentPayload data)
+{
+    string json        = JsonSerializer.Serialize(data);
+    string firstEncode = Convert.ToBase64String(Encoding.UTF8.GetBytes(json));
+    return Convert.ToBase64String(Encoding.UTF8.GetBytes(firstEncode));
+}`,
+            },
+          ]}
+        />
 
         <h3 className="font-semibold text-gray-800 mb-2 mt-6">Step 3 — Construct the iframe URL</h3>
         <CodeBlock>{`https://my.oleqpay.com/p?qp={double_base64_encoded_payload}`}</CodeBlock>
@@ -276,7 +335,11 @@ WEB_URL=https://yourapp.com`}</CodeBlock>
 }`}</CodeBlock>
 
         <h3 className="font-semibold text-gray-800 mb-2 mt-6">Full server-side service example</h3>
-        <CodeBlock label="NestJS service">{`async initiatePayment(orderId: string): Promise<{
+        <CodeTabs
+          tabs={[
+            {
+              label: "NestJS",
+              code: `async initiatePayment(orderId: string): Promise<{
   iframeUrl: string;
   paymentId: string;
   orderId:   string;
@@ -301,7 +364,92 @@ WEB_URL=https://yourapp.com`}</CodeBlock>
   const iframeUrl = \`\${this.config.baseUrl}/p?qp=\${encoded}\`;
 
   return { iframeUrl, paymentId: payment.id, orderId, amount: order.totalAmount };
-}`}</CodeBlock>
+}`,
+            },
+            {
+              label: "Java (Spring Boot)",
+              code: `@Service
+@RequiredArgsConstructor
+public class PaymentService {
+
+    private final OrderRepository orderRepo;
+    private final PaymentRepository paymentRepo;
+    private final OleqPayConfig config;
+
+    public InitiatePaymentResponse initiatePayment(String orderId) throws Exception {
+        Order order = orderRepo.findById(orderId)
+            .orElseThrow(() -> new EntityNotFoundException("Order not found"));
+
+        Payment payment = paymentRepo.save(Payment.builder()
+            .orderId(orderId)
+            .method("MPESA")
+            .status("initiated")
+            .currency("KES")
+            .build());
+
+        PaymentPayload payload = PaymentPayload.builder()
+            .apikey(config.getApiKey())
+            .orderid(orderId)
+            .amount(order.getTotalAmount())
+            .reference("")
+            .callbackurl(config.getCallbackUrl())
+            .returnurl(config.getWebUrl() + "/payment/success")
+            .build();
+
+        String encoded   = encodePaymentData(payload);
+        String iframeUrl = config.getBaseUrl() + "/p?qp=" + encoded;
+
+        return new InitiatePaymentResponse(iframeUrl, payment.getId(), orderId, order.getTotalAmount());
+    }
+}`,
+            },
+            {
+              label: ".NET (C#)",
+              code: `public class PaymentService
+{
+    private readonly AppDbContext _db;
+    private readonly OleqPayOptions _config;
+
+    public PaymentService(AppDbContext db, IOptions<OleqPayOptions> config)
+    {
+        _db     = db;
+        _config = config.Value;
+    }
+
+    public async Task<InitiatePaymentResponse> InitiatePaymentAsync(string orderId)
+    {
+        var order = await _db.Orders.FindAsync(orderId)
+            ?? throw new KeyNotFoundException("Order not found");
+
+        var payment = _db.Payments.Add(new Payment
+        {
+            OrderId    = orderId,
+            Method     = "MPESA",
+            Status     = "initiated",
+            Currency   = "KES",
+            CheckoutId = orderId,
+        });
+        await _db.SaveChangesAsync();
+
+        var payload = new PaymentPayload
+        {
+            ApiKey      = _config.ApiKey,
+            OrderId     = orderId,
+            Amount      = order.TotalAmount,
+            Reference   = "",
+            CallbackUrl = _config.CallbackUrl,
+            ReturnUrl   = $"{_config.WebUrl}/payment/success",
+        };
+
+        string encoded   = EncodePaymentData(payload);
+        string iframeUrl = $"{_config.BaseUrl}/p?qp={encoded}";
+
+        return new InitiatePaymentResponse(iframeUrl, payment.Entity.Id, orderId, order.TotalAmount);
+    }
+}`,
+            },
+          ]}
+        />
         <Callout type="info">
           Always derive amount from your server-side order record. Never accept an amount from
           client requests — this prevents tampering and ensures the charge matches the order
@@ -323,19 +471,23 @@ WEB_URL=https://yourapp.com`}</CodeBlock>
 }`}</CodeBlock>
         <ParamTable
           rows={[
-            { field: "reference", type: "string", desc: "Oleq Pay's unique transaction reference — persist as transactionCode" },
+            { field: "reference", type: "string", desc: "OleqPay's unique transaction reference — persist as transactionCode" },
             { field: "statuscode", type: "string", desc: '"200" = success; anything else = failure' },
             { field: "status", type: "string", desc: '"COMPLETED" = success. Verify BOTH statuscode and status.' },
             { field: "timestamp", type: "string", desc: "ISO 8601 UTC timestamp of when the payment was processed" },
           ]}
         />
         <Callout type="warning">
-          Oleq Pay does not return your <code>orderid</code> in the callback. Match first by{" "}
+          OleqPay does not return your <code>orderid</code> in the callback. Match first by{" "}
           <code>transactionCode</code>, then fall back to the most recent initiated payment.
           Always implement idempotency checks to prevent double-processing.
         </Callout>
         <h3 className="font-semibold text-gray-800 mb-2 mt-6">Callback handler example</h3>
-        <CodeBlock label="NestJS">{`@Post('callback')
+        <CodeTabs
+          tabs={[
+            {
+              label: "NestJS",
+              code: `@Post('callback')
 async handleCallback(@Body() body: OleqPaymentCallback) {
   const isSuccess =
     body.status.toUpperCase() === 'COMPLETED' &&
@@ -372,16 +524,121 @@ async handleCallback(@Body() body: OleqPaymentCallback) {
     data:  { status: 'failed', transactionCode: body.reference },
   });
   return { success: false };
-}`}</CodeBlock>
+}`,
+            },
+            {
+              label: "Java (Spring Boot)",
+              code: `@RestController
+@RequestMapping("/api/payments")
+@RequiredArgsConstructor
+public class PaymentController {
+
+    private final PaymentRepository paymentRepo;
+    private final OrderRepository   orderRepo;
+    private final ApplicationEventPublisher events;
+
+    @PostMapping("/callback")
+    public ResponseEntity<?> handleCallback(@RequestBody OleqPayCallback body) {
+        boolean isSuccess = "COMPLETED".equalsIgnoreCase(body.getStatus())
+                         && "200".equals(body.getStatuscode());
+
+        Payment payment = paymentRepo.findByTransactionCode(body.getReference())
+            .orElseGet(() ->
+                paymentRepo.findFirstByStatusAndMethodOrderByCreatedAtDesc("initiated", "MPESA")
+                    .orElse(null));
+
+        if (payment == null)
+            return ResponseEntity.ok(Map.of("success", false, "message", "Payment not found"));
+
+        if (isSuccess) {
+            payment.setStatus("completed");
+            payment.setTransactionCode(body.getReference());
+            payment.setPaidAt(LocalDateTime.now());
+            paymentRepo.save(payment);
+
+            orderRepo.findById(payment.getOrderId()).ifPresent(o -> {
+                o.setStatus("PAID");
+                orderRepo.save(o);
+            });
+            events.publishEvent(new OrderPaidEvent(payment.getOrderId()));
+            return ResponseEntity.ok(Map.of("success", true));
+        }
+
+        payment.setStatus("failed");
+        payment.setTransactionCode(body.getReference());
+        paymentRepo.save(payment);
+        return ResponseEntity.ok(Map.of("success", false));
+    }
+}`,
+            },
+            {
+              label: ".NET (C#)",
+              code: `[ApiController]
+[Route("api/payments")]
+public class PaymentController : ControllerBase
+{
+    private readonly AppDbContext _db;
+    private readonly IEventBus   _events;
+
+    public PaymentController(AppDbContext db, IEventBus events)
+    {
+        _db     = db;
+        _events = events;
+    }
+
+    [HttpPost("callback")]
+    public async Task<IActionResult> HandleCallback([FromBody] OleqPayCallback body)
+    {
+        bool isSuccess = body.Status.ToUpper() == "COMPLETED" && body.StatusCode == "200";
+
+        var payment = await _db.Payments
+            .Where(p => p.TransactionCode == body.Reference)
+            .FirstOrDefaultAsync()
+            ?? await _db.Payments
+               .Where(p => p.Status == "initiated" && p.Method == "MPESA")
+               .OrderByDescending(p => p.CreatedAt)
+               .FirstOrDefaultAsync();
+
+        if (payment is null)
+            return Ok(new { success = false, message = "Payment not found" });
+
+        if (isSuccess)
+        {
+            payment.Status          = "completed";
+            payment.TransactionCode = body.Reference;
+            payment.PaidAt          = DateTime.UtcNow;
+            await _db.SaveChangesAsync();
+
+            var order = await _db.Orders.FindAsync(payment.OrderId);
+            if (order is not null) { order.Status = "PAID"; await _db.SaveChangesAsync(); }
+
+            await _events.PublishAsync(new OrderPaidEvent(payment.OrderId));
+            return Ok(new { success = true });
+        }
+
+        payment.Status          = "failed";
+        payment.TransactionCode = body.Reference;
+        await _db.SaveChangesAsync();
+        return Ok(new { success = false });
+    }
+}`,
+            },
+          ]}
+        />
       </Section>
 
       <Section id="checkout-status" title="Payment status">
         <p className="mb-4">
-          Poll your own database for payment status rather than calling Oleq Pay repeatedly.
+          Poll your own database for payment status rather than calling OleqPay repeatedly.
           Expose a status endpoint your frontend can poll every 2–3 seconds until a terminal
           state is reached.
         </p>
-        <CodeBlock label="GET /payments/status/:orderId">{`async getPaymentStatus(orderId: string) {
+        <CodeTabs
+          tabs={[
+            {
+              label: "NestJS",
+              code: `// GET /payments/status/:orderId
+async getPaymentStatus(orderId: string) {
   const payment = await this.db.payment.findFirst({
     where:   { orderId },
     orderBy: { createdAt: 'desc' },
@@ -396,7 +653,50 @@ async handleCallback(@Body() body: OleqPaymentCallback) {
     paidAt:          payment.paidAt,
     message:         \`Payment status: \${payment.status}\`,
   };
-}`}</CodeBlock>
+}`,
+            },
+            {
+              label: "Java (Spring Boot)",
+              code: `@GetMapping("/status/{orderId}")
+public ResponseEntity<PaymentStatusResponse> getPaymentStatus(
+        @PathVariable String orderId) {
+
+    Payment payment = paymentRepo
+        .findFirstByOrderIdOrderByCreatedAtDesc(orderId)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Payment not found"));
+
+    return ResponseEntity.ok(PaymentStatusResponse.builder()
+        .orderId(orderId)
+        .paymentStatus(payment.getStatus())    // "initiated" | "completed" | "failed"
+        .transactionCode(payment.getTransactionCode())
+        .paidAt(payment.getPaidAt())
+        .message("Payment status: " + payment.getStatus())
+        .build());
+}`,
+            },
+            {
+              label: ".NET (C#)",
+              code: `[HttpGet("status/{orderId}")]
+public async Task<IActionResult> GetPaymentStatus(string orderId)
+{
+    var payment = await _db.Payments
+        .Where(p => p.OrderId == orderId)
+        .OrderByDescending(p => p.CreatedAt)
+        .FirstOrDefaultAsync()
+        ?? throw new KeyNotFoundException("Payment not found");
+
+    return Ok(new
+    {
+        orderId,
+        paymentStatus   = payment.Status,           // "initiated" | "completed" | "failed"
+        transactionCode = payment.TransactionCode,
+        paidAt          = payment.PaidAt,
+        message         = $"Payment status: {payment.Status}",
+    });
+}`,
+            },
+          ]}
+        />
         <SimpleTable
           headers={["Status", "Meaning"]}
           rows={[
@@ -431,7 +731,7 @@ async handleCallback(@Body() body: OleqPaymentCallback) {
             <span className="text-brand-green font-semibold">POST</span> /api/payments/callback
           </p>
           <p className="mb-3">
-            Webhook receiver — posted by Oleq Pay after payment completes or fails. Not called
+            Webhook receiver — posted by OleqPay after payment completes or fails. Not called
             by your frontend.
           </p>
           <CodeBlock label="Request body">{`{
@@ -1157,7 +1457,7 @@ export default function DevelopersPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f5f4ed] text-gray-800">
+    <main className="bg-[#f5f4ed] text-gray-800">
       {/* ---------- HERO ---------- */}
       <section className="pt-6 sm:pt-10 pb-10 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
