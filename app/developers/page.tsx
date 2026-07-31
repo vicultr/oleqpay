@@ -1,20 +1,53 @@
 "use client";
 
 import React, { useState } from "react";
-import { Info, AlertTriangle, Zap, Lock, Globe, Webhook } from "lucide-react";
+import { Info, AlertTriangle, Zap, Lock, Globe, Webhook, Copy, Check } from "lucide-react";
 
 /* ---------------------------------------------------------- */
 /* Shared building blocks                                      */
 /* ---------------------------------------------------------- */
 
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // clipboard API unavailable — fail silently
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition flex-shrink-0"
+    >
+      {copied ? (
+        <>
+          <Check className="w-3.5 h-3.5" />
+          Copied
+        </>
+      ) : (
+        <>
+          <Copy className="w-3.5 h-3.5" />
+          Copy
+        </>
+      )}
+    </button>
+  );
+}
+
 function CodeBlock({ children, label }: { children: string; label?: string }) {
   return (
     <div className="rounded-xl overflow-hidden border border-gray-800 bg-gray-900 my-4">
-      {label && (
-        <div className="px-4 py-2 text-xs text-gray-400 border-b border-gray-800">
-          {label}
-        </div>
-      )}
+      <div className="flex items-center justify-between px-4 py-2 border-b border-gray-800">
+        <span className="text-xs text-gray-400">{label || "\u00A0"}</span>
+        <CopyButton text={children} />
+      </div>
       <pre className="p-4 overflow-x-auto text-xs sm:text-sm text-gray-100 leading-relaxed">
         <code>{children}</code>
       </pre>
@@ -22,28 +55,40 @@ function CodeBlock({ children, label }: { children: string; label?: string }) {
   );
 }
 
-function CodeTabs({ tabs }: { tabs: { label: string; code: string }[] }) {
-  const [active, setActive] = useState(0);
+function CodeTabs({
+  tabs,
+  activeIndex,
+  onChangeIndex,
+}: {
+  tabs: { label: string; code: string }[];
+  activeIndex: number;
+  onChangeIndex: (i: number) => void;
+}) {
   return (
     <div className="rounded-xl overflow-hidden border border-gray-800 bg-gray-900 my-4">
-      <div className="flex gap-1 px-2 pt-2 overflow-x-auto">
-        {tabs.map((tab, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => setActive(i)}
-            className={`whitespace-nowrap px-3 py-1.5 text-xs rounded-t-md transition ${
-              active === i
-                ? "bg-gray-800 text-white"
-                : "text-gray-500 hover:text-gray-300"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div className="flex items-center justify-between gap-2 px-2 pt-2">
+        <div className="flex gap-1 overflow-x-auto">
+          {tabs.map((tab, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => onChangeIndex(i)}
+              className={`whitespace-nowrap px-3 py-1.5 text-xs rounded-t-md transition ${
+                activeIndex === i
+                  ? "bg-gray-800 text-white"
+                  : "text-gray-500 hover:text-gray-300"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        <div className="pb-1.5 pr-1">
+          <CopyButton text={tabs[activeIndex].code} />
+        </div>
       </div>
       <pre className="p-4 overflow-x-auto text-xs sm:text-sm text-gray-100 leading-relaxed border-t border-gray-800">
-        <code>{tabs[active].code}</code>
+        <code>{tabs[activeIndex].code}</code>
       </pre>
     </div>
   );
@@ -206,7 +251,13 @@ const checkoutNav = [
   { id: "checkout-errors", label: "Error codes" },
 ];
 
+const checkoutLanguages = ["NestJS", "Java (Spring Boot)", ".NET (C#)"];
+
 function CheckoutTab() {
+  // Shared across all 4 language-tabbed code examples on this tab,
+  // so picking a language in one updates all of them at once.
+  const [lang, setLang] = useState(0);
+
   return (
     <>
       <Section id="checkout-overview" title="Overview">
@@ -269,9 +320,11 @@ WEB_URL=https://yourapp.com`}</CodeBlock>
         <h3 className="font-semibold text-gray-800 mb-2 mt-6">Step 2 — Double-encode the payload</h3>
         <p className="mb-2">Serialize the payload to JSON then apply base64 encoding twice:</p>
         <CodeTabs
+          activeIndex={lang}
+          onChangeIndex={setLang}
           tabs={[
             {
-              label: "NestJS",
+              label: checkoutLanguages[0],
               code: `function encodePaymentData(data: {
   apikey: string;
   orderid: string;
@@ -287,7 +340,7 @@ WEB_URL=https://yourapp.com`}</CodeBlock>
 }`,
             },
             {
-              label: "Java (Spring Boot)",
+              label: checkoutLanguages[1],
               code: `import java.util.Base64;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -299,7 +352,7 @@ public String encodePaymentData(PaymentPayload data) throws Exception {
 }`,
             },
             {
-              label: ".NET (C#)",
+              label: checkoutLanguages[2],
               code: `using System;
 using System.Text;
 using System.Text.Json;
@@ -336,9 +389,11 @@ public static string EncodePaymentData(PaymentPayload data)
 
         <h3 className="font-semibold text-gray-800 mb-2 mt-6">Full server-side service example</h3>
         <CodeTabs
+          activeIndex={lang}
+          onChangeIndex={setLang}
           tabs={[
             {
-              label: "NestJS",
+              label: checkoutLanguages[0],
               code: `async initiatePayment(orderId: string): Promise<{
   iframeUrl: string;
   paymentId: string;
@@ -367,7 +422,7 @@ public static string EncodePaymentData(PaymentPayload data)
 }`,
             },
             {
-              label: "Java (Spring Boot)",
+              label: checkoutLanguages[1],
               code: `@Service
 @RequiredArgsConstructor
 public class PaymentService {
@@ -404,7 +459,7 @@ public class PaymentService {
 }`,
             },
             {
-              label: ".NET (C#)",
+              label: checkoutLanguages[2],
               code: `public class PaymentService
 {
     private readonly AppDbContext _db;
@@ -484,9 +539,11 @@ public class PaymentService {
         </Callout>
         <h3 className="font-semibold text-gray-800 mb-2 mt-6">Callback handler example</h3>
         <CodeTabs
+          activeIndex={lang}
+          onChangeIndex={setLang}
           tabs={[
             {
-              label: "NestJS",
+              label: checkoutLanguages[0],
               code: `@Post('callback')
 async handleCallback(@Body() body: OleqPaymentCallback) {
   const isSuccess =
@@ -527,7 +584,7 @@ async handleCallback(@Body() body: OleqPaymentCallback) {
 }`,
             },
             {
-              label: "Java (Spring Boot)",
+              label: checkoutLanguages[1],
               code: `@RestController
 @RequestMapping("/api/payments")
 @RequiredArgsConstructor
@@ -572,7 +629,7 @@ public class PaymentController {
 }`,
             },
             {
-              label: ".NET (C#)",
+              label: checkoutLanguages[2],
               code: `[ApiController]
 [Route("api/payments")]
 public class PaymentController : ControllerBase
@@ -634,9 +691,11 @@ public class PaymentController : ControllerBase
           state is reached.
         </p>
         <CodeTabs
+          activeIndex={lang}
+          onChangeIndex={setLang}
           tabs={[
             {
-              label: "NestJS",
+              label: checkoutLanguages[0],
               code: `// GET /payments/status/:orderId
 async getPaymentStatus(orderId: string) {
   const payment = await this.db.payment.findFirst({
@@ -656,7 +715,7 @@ async getPaymentStatus(orderId: string) {
 }`,
             },
             {
-              label: "Java (Spring Boot)",
+              label: checkoutLanguages[1],
               code: `@GetMapping("/status/{orderId}")
 public ResponseEntity<PaymentStatusResponse> getPaymentStatus(
         @PathVariable String orderId) {
@@ -675,7 +734,7 @@ public ResponseEntity<PaymentStatusResponse> getPaymentStatus(
 }`,
             },
             {
-              label: ".NET (C#)",
+              label: checkoutLanguages[2],
               code: `[HttpGet("status/{orderId}")]
 public async Task<IActionResult> GetPaymentStatus(string orderId)
 {
