@@ -200,12 +200,6 @@ export default function Home() {
                 >
                   Open free account
                 </Link>
-                <a
-                  href="#features"
-                  className="px-8 py-3.5 rounded-full font-medium text-center border border-gray-300 hover:border-gray-400 transition"
-                >
-                  Explore features ↓
-                </a>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
