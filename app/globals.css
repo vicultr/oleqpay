@@ -126,5 +126,57 @@
   }
   body {
     @apply bg-background text-foreground;
+    transition: background-color 200ms ease, color 200ms ease;
   }
+
+  h1,
+  h2 {
+    text-align: center;
+  }
+}
+
+/* The original pages use explicit utility colours. These higher-specificity
+   mappings keep the existing design intact while giving dark mode a deliberate,
+   consistent surface hierarchy. */
+.dark body,
+.dark .bg-\[\#f5f4ed\] {
+  background-color: #081812;
+  color: #eef8f2;
+}
+
+.dark .bg-\[\#f5f4ed\]\/95 {
+  background-color: rgb(8 24 18 / 0.95);
+}
+
+.dark .bg-white,
+.dark .bg-gray-50 {
+  background-color: #10271e;
+}
+
+.dark .text-gray-800,
+.dark .text-gray-700,
+.dark .text-gray-900 {
+  color: #eef8f2;
+}
+
+.dark .text-gray-600,
+.dark .text-gray-500,
+.dark .text-gray-400 {
+  color: #9ab4a7;
+}
+
+.dark .border,
+.dark .border-y,
+.dark .border-t,
+.dark .border-b,
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: #234537;
+}
+
+.dark .shadow-sm,
+.dark .shadow-md,
+.dark .shadow-xl {
+  box-shadow: 0 18px 48px rgb(0 0 0 / 0.22);
 }

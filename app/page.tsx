@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   Shield,
   Zap,
@@ -19,9 +20,6 @@ import {
   Layers,
   Calendar,
   Download,
-  LayoutDashboard,
-  Settings,
-  ArrowUp,
   CheckCircle2,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -33,13 +31,6 @@ export default function Home() {
     { value: "$2B+", label: "Processed annually" },
     { value: "1.2M+", label: "Active users" },
     { value: "< 3s", label: "Settlement time" },
-  ];
-
-  const dashboardNav = [
-    { icon: <LayoutDashboard className="w-4 h-4" />, label: "Dashboard" },
-    { icon: <Wallet className="w-4 h-4" />, label: "Fund Account" },
-    { icon: <Send className="w-4 h-4" />, label: "Make Payments" },
-    { icon: <Settings className="w-4 h-4" />, label: "Business Settings" },
   ];
 
   const rails = ["M-Pesa", "Airtel Money", "MTN MoMo", "Equity Bank", "NCBA", "Absa"];
@@ -134,7 +125,7 @@ export default function Home() {
     },
     {
       title: "Disburse & reconcile",
-      desc: "Trigger one payout; OleqPay fans out to every recipient and auto-generates reports.",
+      desc: "Trigger one payout; Olefi fans out to every recipient and auto-generates reports.",
     },
   ];
 
@@ -162,7 +153,7 @@ export default function Home() {
     {
       icon: <Calendar className="w-6 h-6" />,
       title: "Scheduled & recurring runs",
-      desc: "Set weekly, bi-weekly, or monthly payroll runs. OleqPay auto-executes on schedule and sends receipts to each recipient — zero manual intervention.",
+      desc: "Set weekly, bi-weekly, or monthly payroll runs. Olefi auto-executes on schedule and sends receipts to each recipient — zero manual intervention.",
     },
     {
       icon: <Download className="w-6 h-6" />,
@@ -183,26 +174,26 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left column */}
-            <div>
+            <div className="text-center">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
                 Financial freedom,
                 <br />
                 <span className="text-brand-green">built for Africa.</span>
               </h1>
-              <p className="mt-6 text-base sm:text-lg text-gray-600 max-w-xl">
-                OleqPay gives individuals, businesses, and developers a smarter way to send, receive, and settle money — across borders, in real time, with zero hidden fees.
+              <p className="mx-auto mt-6 max-w-xl text-base text-gray-600 sm:text-lg">
+                Olefi gives individuals, businesses, and developers a smarter way to send, receive, and settle money — across borders, in real time, with zero hidden fees.
               </p>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
                 <Link
-                  href="/contact"
+                  href="#payments"
                   className="bg-brand-green hover:bg-brand-green-dark text-white px-8 py-3.5 rounded-full font-medium text-center transition"
                 >
                   Open free account
                 </Link>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
                 {trustBadges.map((badge, i) => (
                   <span
                     key={i}
@@ -214,7 +205,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
+              <div className="mx-auto mt-10 grid max-w-md grid-cols-3 gap-6">
                 {stats.map((stat, i) => (
                   <div key={i}>
                     <div className="text-2xl sm:text-3xl font-bold">{stat.value}</div>
@@ -224,53 +215,16 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right column — dashboard mockup */}
-            <div className="rounded-2xl shadow-xl border bg-white overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-3 border-b bg-gray-50">
-                <div className="flex gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-300"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-300"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-300"></span>
-                </div>
-                <div className="flex-1 text-center text-xs text-gray-400 truncate">
-                  my.oleqpay.com
-                </div>
-              </div>
-
-              <div className="p-5 sm:p-6">
-                <div className="flex items-center justify-between mb-5">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-green">
-                    <span className="w-2 h-2 rounded-full bg-brand-green"></span>
-                    Live
-                  </span>
-                  <span className="text-xs text-gray-400">OleqPay Dashboard</span>
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-semibold mb-4">
-                  Simple payment process — in seconds
-                </h3>
-
-                <div className="rounded-xl bg-[#f5f4ed] p-4">
-                  <p className="text-xs text-gray-500 mb-1">Last transaction</p>
-                  <p className="text-2xl font-bold">KES 5,000</p>
-                  <p className="text-xs text-brand-green mt-1 flex items-center gap-1">
-                    <ArrowUp className="w-3 h-3" />
-                    Received · just now
-                  </p>
-                </div>
-
-                <div className="mt-5 grid grid-cols-2 gap-3">
-                  {dashboardNav.map((item, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2.5 text-sm text-gray-700"
-                    >
-                      <span className="text-brand-green">{item.icon}</span>
-                      {item.label}
-                    </div>
-                  ))}
-                </div>
-              </div>
+            {/* Real Olefi product interface */}
+            <div className="overflow-hidden rounded-2xl border border-emerald-900/15 bg-[#0b1d16] shadow-2xl dark:border-emerald-400/20">
+              <Image
+                src="/product/dashboard.png"
+                alt="Olefi account dashboard showing wallets, cash-flow metrics and recent transactions"
+                width={1210}
+                height={1536}
+                priority
+                className="h-auto w-full"
+              />
             </div>
           </div>
         </div>
@@ -293,12 +247,12 @@ export default function Home() {
       {/* ---------- FEATURES ---------- */}
       <section id="features" className="py-14 sm:py-24 bg-[#f5f4ed] scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="text-brand-green font-semibold mb-3">Everything you need</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 max-w-2xl">
+          <p className="text-center text-brand-green font-semibold mb-3">Everything you need</p>
+          <h2 className="mx-auto max-w-2xl text-3xl font-bold sm:text-4xl lg:text-5xl">
             Infrastructure built for modern finance.
           </h2>
-          <p className="text-gray-600 max-w-2xl mb-12">
-            OleqPay combines the speed of modern payment rails with bank-level compliance — giving individuals and businesses the best of both worlds.
+          <p className="mx-auto mb-12 mt-4 max-w-2xl text-center text-gray-600">
+            Olefi combines the speed of modern payment rails with bank-level compliance — giving individuals and businesses the best of both worlds.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -344,12 +298,12 @@ export default function Home() {
       {/* ---------- PAYMENTS ---------- */}
       <section id="payments" className="py-14 sm:py-24 bg-[#f5f4ed] scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="text-brand-green font-semibold mb-3">Payments</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 max-w-2xl">
+          <p className="text-center text-brand-green font-semibold mb-3">Payments</p>
+          <h2 className="mx-auto max-w-2xl text-3xl font-bold sm:text-4xl lg:text-5xl">
             Move money the way your business demands.
           </h2>
-          <p className="text-gray-600 max-w-2xl mb-12">
-            From one-click transfers to high-volume batch disbursements, OleqPay handles every payment scenario with the same instant rails and zero friction.
+          <p className="mx-auto mb-12 mt-4 max-w-2xl text-center text-gray-600">
+            From one-click transfers to high-volume batch disbursements, Olefi handles every payment scenario with the same instant rails and zero friction.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
@@ -367,7 +321,7 @@ export default function Home() {
           </div>
 
           <Link
-            href="/contact"
+            href="#payroll"
             className="inline-flex items-center justify-center bg-brand-green hover:bg-brand-green-dark text-white px-8 py-3.5 rounded-full font-medium transition"
           >
             Start sending money
@@ -378,12 +332,12 @@ export default function Home() {
       {/* ---------- BUSINESS PAYROLL ---------- */}
       <section id="payroll" className="py-14 sm:py-24 bg-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="text-brand-green font-semibold mb-3">Business Payroll</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 max-w-2xl">
+          <p className="text-center text-brand-green font-semibold mb-3">Business Payroll</p>
+          <h2 className="mx-auto max-w-2xl text-3xl font-bold sm:text-4xl lg:text-5xl">
             Pay your entire team in one click.
           </h2>
-          <p className="text-gray-600 max-w-2xl mb-12">
-            OleqPay's payroll engine lets you manage recipients, organise them into groups, tag every disbursement by category, and execute bulk payouts to hundreds of beneficiaries simultaneously — all from your business account.
+          <p className="mx-auto mb-12 mt-4 max-w-2xl text-center text-gray-600">
+            Olefi's payroll engine lets you manage recipients, organise them into groups, tag every disbursement by category, and execute bulk payouts to hundreds of beneficiaries simultaneously — all from your business account.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-14">
@@ -414,18 +368,18 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="/contact"
+              href="/services"
               className="bg-brand-green hover:bg-brand-green-dark text-white px-8 py-3.5 rounded-full font-medium text-center transition"
             >
               Set up business payroll
             </Link>
             <Link
-              href="/contact"
+              href="/about"
               className="px-8 py-3.5 rounded-full font-medium text-center border border-gray-300 hover:border-gray-400 transition"
             >
-              Talk to our team
+              Learn about Olefi
             </Link>
           </div>
         </div>

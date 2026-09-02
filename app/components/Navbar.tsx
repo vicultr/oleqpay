@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Menu, X } from "lucide-react";
 
@@ -16,13 +15,23 @@ export default function Navbar() {
         <Card className="bg-white shadow-md border-none rounded-2xl sm:rounded-[2rem]">
           <div className="px-4 sm:px-10 py-0 sm:py-0 flex items-center justify-between lg:grid lg:grid-cols-3">
             {/* LOGO */}
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex h-14 items-center" aria-label="Olefi home">
               <Image
-                src="/Asset 1.png"
-                alt="OleqPay Logo"
-                width={80}
-                height={50}
-                className="object-contain"
+                src="/brand/olefi-wordmark.png"
+                alt="Olefi"
+                width={138}
+                height={46}
+                priority
+                className="h-auto w-[7.75rem] dark:hidden sm:w-[8.625rem]"
+              />
+              <Image
+                src="/brand/olefi-wordmark-white.png"
+                alt=""
+                width={138}
+                height={47}
+                priority
+                aria-hidden="true"
+                className="hidden h-auto w-[7.75rem] dark:block sm:w-[8.625rem]"
               />
             </Link>
 
@@ -41,16 +50,6 @@ export default function Navbar() {
               <li>
                 <Link href="/services" className="cursor-pointer hover:text-gray-900">
                   Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/developers" className="cursor-pointer hover:text-gray-900">
-                  Docs
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="cursor-pointer hover:text-gray-900">
-                  Contact
                 </Link>
               </li>
             </ul>
@@ -89,20 +88,7 @@ export default function Navbar() {
                     Services
                   </Link>
                 </li>
-                <li>
-                  <Link href="/developers" className="cursor-pointer hover:text-gray-900 block">
-                    Docs
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="cursor-pointer hover:text-gray-900 block">
-                    Contact
-                  </Link>
-                </li>
               </ul>
-              <Button className="w-full mt-4 bg-brand-green hover:bg-brand-green-dark text-white rounded-full py-2 text-sm font-medium shadow-none sm:hidden">
-                Get Started
-              </Button>
             </div>
           )}
         </Card>
