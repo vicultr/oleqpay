@@ -23,7 +23,6 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import AppStoreBadges from "./components/AppStoreBadges";
 
 export default function Home() {
   const trustBadges = ["Bank-Level Security", "Instant Settlement", "190+ Countries"];
@@ -193,8 +192,6 @@ export default function Home() {
                   Open free account
                 </Link>
               </div>
-
-              <AppStoreBadges />
 
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 {trustBadges.map((badge, i) => (
