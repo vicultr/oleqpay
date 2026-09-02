@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import AppStoreBadges from "./AppStoreBadges";
 
 export default function Footer() {
   return (
@@ -58,6 +59,10 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+      </div>
+      <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 px-4 pt-8 text-center sm:px-6">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">Get the Olefi app</p>
+        <AppStoreBadges />
       </div>
       <div className="mx-auto mt-10 flex max-w-7xl flex-col items-center justify-between gap-5 border-t border-white/10 px-4 pt-8 text-sm text-gray-500 sm:flex-row sm:px-6">
         <span>© {new Date().getFullYear()} Olefi. All rights reserved.</span>
