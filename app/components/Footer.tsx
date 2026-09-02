@@ -6,7 +6,7 @@ import AppStoreBadges from "./AppStoreBadges";
 export default function Footer() {
   return (
     <footer className="bg-black text-gray-300 py-12 sm:py-16">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 px-4 sm:px-6">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 sm:gap-10 sm:px-6 lg:grid-cols-[1.35fr_0.75fr_0.9fr_0.9fr_1.2fr]">
         <div>
           <Image
             src="/brand/olefi-wordmark-white.png"
@@ -59,10 +59,10 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-      </div>
-      <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 px-4 pt-8 text-center sm:px-6">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">Get the Olefi app</p>
-        <AppStoreBadges />
+        <div>
+          <h4 className="mb-3 font-semibold text-white sm:mb-4">Get the app</h4>
+          <AppStoreBadges />
+        </div>
       </div>
       <div className="mx-auto mt-10 flex max-w-7xl flex-col items-center justify-between gap-5 border-t border-white/10 px-4 pt-8 text-sm text-gray-500 sm:flex-row sm:px-6">
         <span>© {new Date().getFullYear()} Olefi. All rights reserved.</span>

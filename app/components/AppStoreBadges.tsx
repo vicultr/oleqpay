@@ -1,9 +1,9 @@
 export default function AppStoreBadges() {
   const storeClass =
-    "group inline-flex min-w-[10.75rem] items-center gap-3 rounded-xl border border-gray-800 bg-[#0b0b0b] px-4 py-2.5 text-left text-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand-green hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2";
+    "group inline-flex w-full max-w-[11rem] items-center gap-3 rounded-xl border border-gray-800 bg-[#0b0b0b] px-3.5 py-2.5 text-left text-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand-green hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2";
 
   return (
-    <div className="mt-5 flex flex-wrap justify-center gap-3" aria-label="Download the Olefi mobile app">
+    <div className="flex flex-col items-start gap-2.5" aria-label="Download the Olefi mobile app">
       <a
         href="https://apps.apple.com/us/app/oleq-pay/id6781711391"
         target="_blank"
