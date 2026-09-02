@@ -19,19 +19,19 @@ export default function Navbar() {
               <Image
                 src="/brand/olefi-wordmark.png"
                 alt="Olefi"
-                width={138}
-                height={46}
+                width={112}
+                height={37}
                 priority
-                className="h-auto w-[7.75rem] dark:hidden sm:w-[8.625rem]"
+                className="h-auto w-[6.5rem] dark:hidden sm:w-28"
               />
               <Image
                 src="/brand/olefi-wordmark-white.png"
                 alt=""
-                width={138}
-                height={47}
+                width={112}
+                height={38}
                 priority
                 aria-hidden="true"
-                className="hidden h-auto w-[7.75rem] dark:block sm:w-[8.625rem]"
+                className="hidden h-auto w-[6.5rem] dark:block sm:w-28"
               />
             </Link>
 
@@ -54,11 +54,25 @@ export default function Navbar() {
               </li>
             </ul>
 
-            {/* MOBILE MENU BUTTON - RIGHT ALIGNED */}
-            <div className="flex items-center justify-end">
+            {/* ACCOUNT ACTIONS */}
+            <div className="flex items-center justify-end gap-2">
+              <a
+                href="https://my.oleqpay.com/"
+                className="hidden rounded-full px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100 hover:text-gray-900 lg:inline-flex"
+              >
+                Log in
+              </a>
+              <a
+                href="https://my.oleqpay.com/"
+                className="hidden rounded-full bg-brand-green px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-green-dark lg:inline-flex"
+              >
+                Register
+              </a>
               <button
-                className="lg:hidden p-2"
+                className="rounded-full p-2 lg:hidden"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
+                aria-expanded={mobileMenuOpen}
               >
                 {mobileMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -89,6 +103,20 @@ export default function Navbar() {
                   </Link>
                 </li>
               </ul>
+              <div className="mt-5 grid grid-cols-2 gap-3 border-t pt-5">
+                <a
+                  href="https://my.oleqpay.com/"
+                  className="rounded-full border border-gray-300 px-4 py-2.5 text-center text-sm font-semibold text-gray-700 transition hover:border-brand-green hover:text-brand-green"
+                >
+                  Log in
+                </a>
+                <a
+                  href="https://my.oleqpay.com/"
+                  className="rounded-full bg-brand-green px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-brand-green-dark"
+                >
+                  Register
+                </a>
+              </div>
             </div>
           )}
         </Card>
