@@ -14,7 +14,7 @@ export default function AboutPage() {
     {
       icon: <Globe className="w-8 h-8" />,
       title: "Global Access",
-      desc: "OleqPay enables borderless payments, helping businesses reach customers in 190+ countries with local payment methods.",
+      desc: "Olefi enables borderless payments, helping businesses reach customers in 190+ countries with local payment methods.",
     },
     {
       icon: <Zap className="w-8 h-8" />,
@@ -32,7 +32,7 @@ export default function AboutPage() {
     {
       year: "2019",
       title: "Founded",
-      desc: "OleqPay was established with a vision to revolutionize digital payments",
+      desc: "Olefi was established with a vision to revolutionize digital payments",
     },
     {
       year: "2020",
@@ -89,10 +89,10 @@ export default function AboutPage() {
         </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-            About <span className="text-brand-green">OleqPay</span>
+            About <span className="text-brand-green">Olefi</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            OleqPay is a modern payment gateway built to power fast, seamless,
+            Olefi is a modern payment gateway built to power fast, seamless,
             and secure digital transactions for businesses worldwide. We're on a mission to make global commerce accessible to everyone.
           </p>
         </div>
@@ -128,7 +128,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Story</h2>
               <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-4">
-                OleqPay was created with a simple mission:
+                Olefi was created with a simple mission:
                 <strong> make digital payments effortless for everyone.</strong>
               </p>
               <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-4">
@@ -143,7 +143,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="rounded-2xl h-64 sm:h-96 flex items-center justify-center overflow-hidden shadow-xl bg-[#f5f4ed]">
-              <img src="/illustrations/our-story.svg" alt="Illustration of business growth powered by OleqPay" className="w-full h-full object-contain p-6" />
+              <img src="/illustrations/our-story.svg" alt="Illustration of business growth powered by Olefi" className="w-full h-full object-contain p-6" />
             </div>
           </div>
         </div>
@@ -335,7 +335,7 @@ export default function AboutPage() {
       <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-            Why Businesses Choose OleqPay
+            Why Businesses Choose Olefi
           </h2>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
             We're more than just a payment gateway - we're your partner in growth

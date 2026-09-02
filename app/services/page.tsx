@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ShoppingBag,
@@ -140,9 +141,59 @@ export default function ServicesPage() {
             Our Services
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            OleqPay provides a complete suite of payment solutions designed to
+            Olefi provides a complete suite of payment solutions designed to
             help businesses grow, scale, and operate globally with ease. From startups to enterprises, we have the tools you need.
           </p>
+        </div>
+      </section>
+
+      {/* ---------- PRODUCT EXPERIENCE ---------- */}
+      <section className="bg-white py-12 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <p className="mb-3 text-center font-semibold text-brand-green">The Olefi workspace</p>
+          <h2 className="text-3xl font-bold sm:text-4xl">One account. Every money movement.</h2>
+          <p className="mx-auto mb-12 mt-4 max-w-2xl text-center text-gray-600">
+            Fund your account, make payments and control business preferences from one secure workspace.
+          </p>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {[
+              {
+                src: "/product/fund-account.png",
+                title: "Fund your account",
+                text: "Add funds through M-Pesa or cryptocurrency with the account and amount clearly confirmed before payment.",
+                position: "object-top",
+              },
+              {
+                src: "/product/make-payments.png",
+                title: "Make payments confidently",
+                text: "Choose the funding account, provider and recipients in a focused transfer flow with verification built in.",
+                position: "object-top",
+              },
+              {
+                src: "/product/settings.png",
+                title: "Control your business",
+                text: "Manage payment methods, notifications, limits, approvals and security from one place.",
+                position: "object-top",
+              },
+            ].map((item) => (
+              <article key={item.src} className="overflow-hidden rounded-2xl border bg-[#0b1d16] shadow-xl">
+                <div className="h-72 overflow-hidden border-b border-emerald-900/40 sm:h-80">
+                  <Image
+                    src={item.src}
+                    alt={`${item.title} in the Olefi business dashboard`}
+                    width={1225}
+                    height={933}
+                    className={`h-full w-full object-cover ${item.position}`}
+                  />
+                </div>
+                <div className="p-6 text-center text-white">
+                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-emerald-50/70">{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -254,7 +305,7 @@ export default function ServicesPage() {
       <section className="py-12 sm:py-20 bg-gradient-to-br from-brand-green to-brand-green-dark">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-white">
-            Why Choose OleqPay Services
+            Why Choose Olefi Services
           </h2>
           <p className="text-center text-white/90 max-w-2xl mx-auto mb-12">
             Built with your success in mind
@@ -418,15 +469,15 @@ export default function ServicesPage() {
       <section className="py-16 sm:py-20 bg-white text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Build With OleqPay Today
+            Build With Olefi Today
           </h2>
           <p className="text-gray-600 mb-8 text-lg">
-            Start accepting fast, secure, and global payments in minutes. Join thousands of businesses already powered by OleqPay.
+            Start accepting fast, secure, and global payments in minutes. Join thousands of businesses already powered by Olefi.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-brand-green hover:bg-brand-green-dark text-white px-8 py-4 rounded-full font-medium inline-flex items-center justify-center gap-2 transition">
-              Contact Sales <ArrowRight className="w-5 h-5" />
+              Explore Olefi <ArrowRight className="w-5 h-5" />
             </button>
           </div>
 
