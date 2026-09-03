@@ -186,7 +186,7 @@ export default function Home() {
 
               <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
                 <Link
-                  href="#payments"
+                  href="https://my.oleqpay.com/"
                   className="bg-brand-green hover:bg-brand-green-dark text-white px-8 py-3.5 rounded-full font-medium text-center transition"
                 >
                   Open free account
@@ -321,7 +321,7 @@ export default function Home() {
           </div>
 
           <Link
-            href="#payroll"
+            href="https://my.oleqpay.com/"
             className="inline-flex items-center justify-center bg-brand-green hover:bg-brand-green-dark text-white px-8 py-3.5 rounded-full font-medium transition"
           >
             Start sending money
@@ -370,7 +370,7 @@ export default function Home() {
 
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="/services"
+              href="https://my.oleqpay.com/"
               className="bg-brand-green hover:bg-brand-green-dark text-white px-8 py-3.5 rounded-full font-medium text-center transition"
             >
               Set up business payroll
