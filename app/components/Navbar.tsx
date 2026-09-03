@@ -57,13 +57,13 @@ export default function Navbar() {
             {/* ACCOUNT ACTIONS */}
             <div className="flex items-center justify-end gap-2">
               <a
-                href="https://my.oleqpay.com/"
+                href="https://my.olefi.co"
                 className="hidden rounded-full px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100 hover:text-gray-900 lg:inline-flex"
               >
                 Log in
               </a>
               <a
-                href="https://my.oleqpay.com/"
+                href="https://my.olefi.co"
                 className="hidden rounded-full bg-brand-green px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-green-dark lg:inline-flex"
               >
                 Register
@@ -105,13 +105,13 @@ export default function Navbar() {
               </ul>
               <div className="mt-5 grid grid-cols-2 gap-3 border-t pt-5">
                 <a
-                  href="https://my.oleqpay.com/"
+                  href="https://my.olefi.co"
                   className="rounded-full border border-gray-300 px-4 py-2.5 text-center text-sm font-semibold text-gray-700 transition hover:border-brand-green hover:text-brand-green"
                 >
                   Log in
                 </a>
                 <a
-                  href="https://my.oleqpay.com/"
+                  href="https://my.olefi.co"
                   className="rounded-full bg-brand-green px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-brand-green-dark"
                 >
                   Register

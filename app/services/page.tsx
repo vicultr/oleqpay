@@ -476,7 +476,7 @@ export default function ServicesPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://my.oleqpay.com/" className="bg-brand-green hover:bg-brand-green-dark text-white px-8 py-4 rounded-full font-medium inline-flex items-center justify-center gap-2 transition">
+            <a href="https://my.olefi.co" className="bg-brand-green hover:bg-brand-green-dark text-white px-8 py-4 rounded-full font-medium inline-flex items-center justify-center gap-2 transition">
               Explore Olefi <ArrowRight className="w-5 h-5" />
             </a>
           </div>
