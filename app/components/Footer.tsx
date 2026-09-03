@@ -6,7 +6,7 @@ import AppStoreBadges from "./AppStoreBadges";
 export default function Footer() {
   return (
     <footer className="bg-black text-gray-300 py-12 sm:py-16">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 sm:gap-10 sm:px-6 lg:grid-cols-[1.35fr_0.75fr_0.9fr_0.9fr_1.2fr]">
+      <div className="mx-auto grid max-w-[90rem] grid-cols-1 gap-8 px-4 sm:grid-cols-2 sm:gap-10 sm:px-6 lg:grid-cols-[1.25fr_0.65fr_0.8fr_0.85fr_1fr_1.15fr]">
         <div>
           <Image
             src="/brand/olefi-wordmark-white.png"
@@ -33,15 +33,23 @@ export default function Footer() {
           <h4 className="text-white font-semibold mb-3 sm:mb-4">Support</h4>
           <ul className="space-y-2 text-sm sm:text-base">
             <li>
-              <Link href="/help-center" className="hover:text-white transition-colors">
+              <a href="mailto:support@oleq.co?subject=Olefi%20support%20request" className="hover:text-white transition-colors">
                 Help Center
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href="/report-issue" className="hover:text-white transition-colors">
+              <a href="mailto:support@oleq.co?subject=Report%20an%20Olefi%20issue" className="hover:text-white transition-colors">
                 Report Issue
-              </Link>
+              </a>
             </li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="mb-3 font-semibold text-white sm:mb-4">Contact</h4>
+          <ul className="space-y-2 text-sm sm:text-base">
+            <li><a href="mailto:support@oleq.co" className="break-all transition-colors hover:text-white">support@oleq.co</a></li>
+            <li><a href="tel:+254728555585" className="transition-colors hover:text-white">+254 728 555 585</a></li>
+            <li><a href="https://oleq.co/#contact" className="transition-colors hover:text-white">WhatsApp — @oleq</a></li>
           </ul>
         </div>
         <div>
