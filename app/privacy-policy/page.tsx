@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
         <header className="mb-12 border-b pb-8 text-center">
           <p className="mb-3 font-semibold text-brand-green">Legal</p>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Privacy Policy</h1>
-          <p className="mt-4 text-sm text-gray-500">Effective 3 September 2026</p>
+          <p className="mt-4 text-sm text-gray-500">Effective 4 September 2026</p>
         </header>
 
         <div className="space-y-10">
@@ -45,18 +45,26 @@ export default function PrivacyPolicyPage() {
             <p>Information is retained only for as long as reasonably needed for the purpose for which it was collected and for applicable legal, regulatory, tax, accounting, fraud-prevention or reporting requirements. Different records may therefore have different retention periods.</p>
           </Section>
 
-          <Section title="6. Your choices and rights">
-            <p>Subject to applicable law, you may ask to access, correct or delete personal information, object to or restrict certain processing, or withdraw consent where processing relies on consent. Some information may need to be retained when the law requires it or when it is necessary to establish or defend legal claims.</p>
-            <p>Send a request from the email associated with your account to <a href="mailto:support@oleq.co?subject=Olefi%20privacy%20request" className="font-medium text-brand-green underline-offset-4 hover:underline">support@oleq.co</a>. Olefi may need to verify your identity before completing a request.</p>
+          <Section title="6. International processing">
+            <p>Olefi and its service providers may process personal information outside the country where it was collected. Where information is transferred across borders, we use safeguards required by applicable law, such as contractual protections, approved transfer mechanisms and appropriate security controls.</p>
           </Section>
 
-          <Section title="7. External services">
+          <Section title="7. Cookies and similar technologies">
+            <p>Olefi may use cookies, local storage and similar technologies to keep you signed in, remember preferences, protect accounts, understand use of the service and improve performance. You can control cookies through your browser, but blocking essential technologies may prevent parts of the service from working correctly.</p>
+          </Section>
+
+          <Section title="8. Your choices and rights">
+            <p>Subject to applicable law, including Kenya&apos;s Data Protection Act, 2019, you may ask to be informed about the use of your data; access, correct or delete personal information; object to or restrict certain processing; request data portability; or withdraw consent where processing relies on consent. Some information may need to be retained where the law requires it or where it is necessary to establish or defend legal claims.</p>
+            <p>Send a request from the email associated with your account to <a href="mailto:support@oleq.co?subject=Olefi%20privacy%20request" className="font-medium text-brand-green underline-offset-4 hover:underline">support@oleq.co</a>. Olefi may need to verify your identity before completing a request. You may also complain to Kenya&apos;s Office of the Data Protection Commissioner or another competent privacy regulator.</p>
+          </Section>
+
+          <Section title="9. External services">
             <p>This website links to the Apple App Store, Google Play and other external services. Their privacy practices are governed by their own policies, not this one.</p>
           </Section>
 
-          <Section title="8. Changes and contact">
+          <Section title="10. Changes and contact">
             <p>This policy may be updated when the service or applicable requirements change. The effective date above shows when this version took effect.</p>
-            <p>Questions or privacy requests can be sent to <a href="mailto:support@oleq.co" className="font-medium text-brand-green underline-offset-4 hover:underline">support@oleq.co</a> or raised by telephone at <a href="tel:+254728555585" className="font-medium text-brand-green underline-offset-4 hover:underline">+254 728 555 585</a>.</p>
+            <p>Questions or privacy requests can be sent to <a href="mailto:support@oleq.co" className="font-medium text-brand-green underline-offset-4 hover:underline">support@oleq.co</a>, raised by telephone at <a href="tel:+254728555585" className="font-medium text-brand-green underline-offset-4 hover:underline">+254 728 555 585</a>, or sent through <a href="https://oleq.co/#contact" className="font-medium text-brand-green underline-offset-4 hover:underline">WhatsApp — @oleq</a>. See our <a href="/terms-of-service" className="font-medium text-brand-green underline-offset-4 hover:underline">Terms of Service</a> for the rules governing use of Olefi.</p>
           </Section>
         </div>
       </article>
