@@ -19,7 +19,7 @@ export default function TermsOfServicePage() {
         <header className="mb-12 border-b pb-8 text-center">
           <p className="mb-3 font-semibold text-brand-green">Legal</p>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Terms of Service</h1>
-          <p className="mt-4 text-sm text-gray-500">Effective 3 September 2026</p>
+          <p className="mt-4 text-sm text-gray-500">Effective 4 September 2026</p>
         </header>
 
         <div className="space-y-10">
@@ -39,7 +39,7 @@ export default function TermsOfServicePage() {
           </Section>
 
           <Section title="4. Payments, fees and third-party rails">
-            <p>Olefi may rely on mobile-money operators, banks, card networks, digital-asset networks and other providers to complete transactions. Processing times and availability can therefore be affected by third-party systems.</p>
+            <p>Olefi may rely on mobile-money operators, banks, card networks, mobile-money operators and other payment providers to complete transactions. Processing times and availability can therefore be affected by third-party systems.</p>
             <p>Any applicable amount, fee, exchange information or limit should be shown in the service or agreed with you before the relevant transaction. You are responsible for reviewing those details before confirming.</p>
             <p>A transaction may be delayed, rejected, reversed or placed under review where required for security, compliance, insufficient funds, incorrect details, network rules or technical reasons.</p>
           </Section>
@@ -63,8 +63,17 @@ export default function TermsOfServicePage() {
             <p>These terms are governed by the applicable laws of Kenya. Any mandatory consumer, privacy or payment rights that apply to you remain unaffected.</p>
           </Section>
 
-          <Section title="9. Contact">
-            <p>Questions, complaints or account issues can be sent to <a href="mailto:support@oleq.co?subject=Olefi%20terms%20or%20account%20question" className="font-medium text-brand-green underline-offset-4 hover:underline">support@oleq.co</a> or raised by telephone at <a href="tel:+254728555585" className="font-medium text-brand-green underline-offset-4 hover:underline">+254 728 555 585</a>.</p>
+          <Section title="9. Complaints and disputes">
+            <p>To raise a complaint, email <a href="mailto:support@oleq.co?subject=Olefi%20complaint" className="font-medium text-brand-green underline-offset-4 hover:underline">support@oleq.co</a> with your account details, transaction reference and a clear description of the issue. We will investigate and respond within a reasonable period.</p>
+            <p>You retain any right available under applicable law to approach a regulator, ombudsman or court of competent jurisdiction.</p>
+          </Section>
+
+          <Section title="10. Privacy">
+            <p>Our <a href="/privacy-policy" className="font-medium text-brand-green underline-offset-4 hover:underline">Privacy Policy</a> explains how personal information is collected, used, shared and protected when you use Olefi.</p>
+          </Section>
+
+          <Section title="11. Contact">
+            <p>Questions, complaints or account issues can be sent to <a href="mailto:support@oleq.co?subject=Olefi%20terms%20or%20account%20question" className="font-medium text-brand-green underline-offset-4 hover:underline">support@oleq.co</a>, raised by telephone at <a href="tel:+254728555585" className="font-medium text-brand-green underline-offset-4 hover:underline">+254 728 555 585</a>, or sent through <a href="https://oleq.co/#contact" className="font-medium text-brand-green underline-offset-4 hover:underline">WhatsApp — @oleq</a>.</p>
           </Section>
         </div>
       </article>
